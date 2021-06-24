@@ -4,7 +4,7 @@
  */
 #include <ChainableLED.h>
 
-#define NUM_LEDS 5
+#define NUM_LEDS 1
 
 ChainableLED leds(7, 8, NUM_LEDS);
 
