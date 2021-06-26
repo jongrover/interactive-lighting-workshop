@@ -39,15 +39,15 @@ void loop() {
   mySensor.add(value);
   float average = mySensor.get();
   if (average < sense_threshold) {
-    brightness = 0.0; 
+    for (byte i=0; i<NUM_LEDS; i++) {
+      leds.setColorRGB(i, 255, 0, 0);
+    }
   } else {
-    brightness = (average - min_sense_val) * (max_brightness - min_brightness) / (max_sense_val - min_sense_val) + min_brightness;
+    for (byte i=0; i<NUM_LEDS; i++) {
+      leds.setColorRGB(i, 0, 255, 0);
+    }
   }
   Serial.println(brightness);
-   
-  for (byte i=0; i<NUM_LEDS; i++) {
-    leds.setColorHSB(i, hue, saturation, brightness);
-  }
     
   if (up) {
     hue+= fade_amount;
